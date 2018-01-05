@@ -29,7 +29,9 @@ class Bitbucket extends PjaxAdapter {
   updateLayout(togglerVisible, sidebarVisible, sidebarWidth) {
     $('.octotree_toggle').css('right', sidebarVisible ? '' : -44)
     $('.aui-header').css('padding-left', sidebarVisible ? '' : 56)
-    $('html').css('margin-left', sidebarVisible ? sidebarWidth : '')
+    const bitbucketLeftBarWidth = $('#adg3-navigation > div > div > div').width()
+    const marginLeft = sidebarWidth > bitbucketLeftBarWidth ? sidebarWidth - bitbucketLeftBarWidth: 0
+    $('html').css('margin-left', sidebarVisible ? marginLeft: '')
   }
 
   // @override
